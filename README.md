@@ -1,4 +1,4 @@
-# makeblock-ros
+# mBot_Ranger_ROS_pkg
 Makeblock Me Auriga ROS package.
 
 Features:
