@@ -14,7 +14,7 @@ Connect ultrasonic sensor to port 9
 
 Required:
 --
-- pip install megapi
+- [https://github.com/Kreativadelar/PythonForMeAuriga](https://github.com/Kreativadelar/PythonForMeAuriga)
 - pip install pySerial
 
 Installation:
