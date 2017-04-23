@@ -1,0 +1,5 @@
+<launch>
+  <node pkg="mBot_Ranger_ROS_pkg" type="mBot_Ranger_controller.py"
+        name="mBot_Ranger_controller" output="screen"/>
+
+</launch>
