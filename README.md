@@ -1,5 +1,5 @@
 # mBot_Ranger_ROS_pkg
-Makeblock Me Auriga ROS package.
+Makeblock mBot Ranger / Me Auriga ROS package.
 
 This package is based on the work of [to4dy/makeblock-ros](https://github.com/to4dy/makeblock-ros) 
 
@@ -10,6 +10,8 @@ Features:
 
 Hardware:
 --
+The Me Auriga is connected with USB cable to a Raspberry Pi running Ubuntu Mate and ROS Kinetic
+
 Connect ultrasonic sensor to port 9
 
 Required:
