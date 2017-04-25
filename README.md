@@ -20,7 +20,7 @@ Required:
 --
 - [https://github.com/Kreativadelar/PythonForMeAuriga](https://github.com/Kreativadelar/PythonForMeAuriga)
 - pip install pySerial
-- For teleop. with xbox 360 controller you ned [Joy](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick) 
+- For teleop. with xbox 360 controller you need [Joy](http://wiki.ros.org/joy/Tutorials/ConfiguringALinuxJoystick) 
 
 Installation:
 --
