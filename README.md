@@ -12,6 +12,8 @@ Hardware:
 --
 The Me Auriga is connected with USB cable to a Raspberry Pi running Ubuntu Mate and ROS Kinetic
 
+[Images on hardware setup](https://1drv.ms/f/s!AvT_4rqHWl-Rhf1buRJ0OVnz2DojRQ)
+
 Connect ultrasonic sensor to port 9
 
 Required:
