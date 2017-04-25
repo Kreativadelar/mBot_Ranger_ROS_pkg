@@ -10,6 +10,7 @@ from mBot_Ranger_ROS_pkg.srv import *
 bot = None
 useTankSteering = True;
 online = False;
+blueLight = False;
 
 
 # Defining functions
@@ -18,7 +19,7 @@ online = False;
 # Callback for readings from ultrasonic sensor 
 def onUltrasonicSensorRead(v):
     #print("and here!")
-    rospy.loginfo('Distance' + v)
+    #rospy.loginfo('Distance: ' + str(v))
     pub.publish(v)
 
 
@@ -27,6 +28,7 @@ def onUltrasonicSensorRead(v):
 # axis 1 aka left stick vertical controls linear speed
 # axis 0 aka left stick horizonal controls angular speed
 def joyCallback(data):
+    global blueLight
     #twist = Twist()
     #twist.linear.x = 4*data.axes[1]
     #twist.angular.z = 4*data.axes[0]
@@ -35,9 +37,16 @@ def joyCallback(data):
     m1 = numpy.interp(data.axes[1],[-1,1],[-255,255])
     m2 = numpy.interp(data.axes[4],[-1,1],[-255,255])
     bot_control_motors(m1, m2)
-    rospy.loginfo(m1)
-    rospy.loginfo(m2)
-    #rospy.loginfo(data)
+    
+    #Set led ring to blue 
+    if data.buttons[2] == 1:
+        blueLight = True
+    else:
+        blueLight = False
+
+    #rospy.loginfo(m1)
+    #rospy.loginfo(m2)
+    rospy.loginfo(data)
 
 
 # Service method add velocity to motors 
@@ -51,8 +60,8 @@ def bot_control_motors(m1, m2):
     global bot
     global online
     if online:
-        bot.motorRun(M1, req.s1)
-        bot.motorRun(M2, req.s2)
+        bot.motorRun(M1, m1)
+        bot.motorRun(M2, m2)
 
 
 # Defining variables
@@ -80,6 +89,18 @@ def main():
         #print("been here!")
 	if online:
             bot.ultrasonicSensorRead(3, onUltrasonicSensorRead)
+            #RGB Led ring
+            for i in range(16):
+                if blueLight:
+                    red = 0;
+                    green = 0;
+                    blue = 255;
+                else:
+                    red = 0;
+                    green = 0;
+                    blue = 0;
+                bot.rgbledDisplay(0,1,i,red,green,blue);
+            
 
 
 if __name__ == '__main__':
