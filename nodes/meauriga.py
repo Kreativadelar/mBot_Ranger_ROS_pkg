@@ -205,20 +205,20 @@ class MeAuriga():
         self.__writePackage(bytearray([0xff,0x55,0x6,0x0,0x2,0xb,port,slot,angle]))
 
     def encoderMotorRun(self,slot,speed):
-        deviceId = 61;
-        self.__writePackage(bytearray([0xff,0x55,0x8,0,0x2,deviceId,0,slot,1]+self.short2bytes(speed)))
+        deviceId = 62;
+        self.__writePackage(bytearray([0xff,0x55,0x8,0,0x2,deviceId,2,slot]+self.short2bytes(speed)))
 
     def encoderMotorMove(self,slot,speed,distance,callback):
-        deviceId = 61;
+        deviceId = 62;
         extId = ((slot<<4)+deviceId)&0xff
         self.__doCallback(extId,callback)
-        self.__writePackage(bytearray([0xff,0x55,12,extId,0x2,deviceId,0,slot,2]+self.short2bytes(speed)+self.long2bytes(distance)))
+        self.__writePackage(bytearray([0xff,0x55,12,extId,0x2,deviceId,0,slot,1]+self.short2bytes(speed)+self.long2bytes(distance)))
 
     def encoderMotorMoveTo(self,slot,speed,position,callback):
-        deviceId = 61;
+        deviceId = 62;
         extId = ((slot<<4)+deviceId)&0xff
         self.__doCallback(extId,callback)
-        self.__writePackage(bytearray([0xff,0x55,12,extId,0x2,deviceId,0,slot,3]+self.short2bytes(speed)+self.long2bytes(position)))
+        self.__writePackage(bytearray([0xff,0x55,12,extId,0x2,deviceId,0,slot,1]+self.short2bytes(speed)+self.long2bytes(position)))
 
 
     def encoderMotorPosition(self,slot,callback):
